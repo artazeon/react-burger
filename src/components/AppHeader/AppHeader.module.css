@@ -1,0 +1,52 @@
+.header {
+  background-color: #1c1c21;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+  width: 1280px;
+  max-width: 1280px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+}
+
+.wrapButtonLeft {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.wrapLogo {
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%);
+}
+
+.buttonText {
+  color: #8585ad;
+  transition: 0.3s;
+}
+
+.buttonTextActive {
+  color: #fff;
+}
+
+.button {
+  display: flex;
+  align-items: center;
+}
+.button svg {
+  transition: 0.3s;
+}
+
+.button:hover .buttonText {
+  color: #fff;
+}
+
+.button:hover svg {
+  fill: #fff;
+}
