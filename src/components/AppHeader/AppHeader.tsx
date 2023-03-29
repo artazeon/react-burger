@@ -7,6 +7,7 @@ import { BurgerIcon } from '@ya.praktikum/react-developer-burger-ui-components'
 import { ListIcon } from '@ya.praktikum/react-developer-burger-ui-components'
 import { ProfileIcon } from '@ya.praktikum/react-developer-burger-ui-components'
 
+
 const AppHeader = () => {
   return (
     <header className={`pt-4 pb-4 ${styles.header}`}>

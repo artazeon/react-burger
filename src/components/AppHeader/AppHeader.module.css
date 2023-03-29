@@ -38,7 +38,12 @@
 .button {
   display: flex;
   align-items: center;
+  
 }
+.button a {
+  text-decoration: none;
+}
+
 .button svg {
   transition: 0.3s;
 }
