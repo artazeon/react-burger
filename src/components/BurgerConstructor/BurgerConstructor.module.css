@@ -1,0 +1,27 @@
+
+.scroll {
+    max-height: calc(100vh - 260px);
+    overflow: auto;
+    position: relative;
+  }
+  
+  .scroll::-webkit-scrollbar {
+    width: 8px;
+    height: 8px; 
+    background-color: #2f2f37;
+    border-top: 52px solid #131316;
+    border-bottom: 52px solid #131316;
+  }
+  
+  .scroll::-webkit-scrollbar-thumb {
+    background-color: #8585ad;
+    background: linear-gradient(to bottom, rgba(0,0,0,0), rgba(0,0,0,0) 11%, #8585AD 11%, #8585AD 89%, rgba(0,0,0,0) 89%, rgba(0,0,0,0));
+    border-color: transparent;
+    height: 492px;
+  }
+  
+  .scroll::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(to bottom, rgba(0,0,0,0), rgba(0,0,0,0) 11%, #aaaadc 11%, #aaaadc 89%, rgba(0,0,0,0) 89%, rgba(0,0,0,0));
+  }
+  
+  

@@ -1,14 +1,15 @@
 import React from 'react'
 // import './index.css'
-import styles from './BurgerIngredients.module.css'
+import styles from './BurgerConstructor.module.css'
 import data from '../../utils/data.js'
 import { ConstructorElement } from '@ya.praktikum/react-developer-burger-ui-components'
 
-const BurgerIngredients = () => {
+const BurgerConstructor = () => {
   console.log(data)
   return (
-    <>
-      <p>BurgerConstructor</p>
+    <><div className={styles.scroll}>
+      <p>BurgerConstructors</p>
+      
       <ConstructorElement
         text={data[0].name}
         price={data[0].price}
@@ -24,8 +25,9 @@ const BurgerIngredients = () => {
           />
         )
       })}
+      </div>
     </>
   )
 }
 
-export default BurgerIngredients
+export default BurgerConstructor
