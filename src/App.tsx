@@ -16,7 +16,6 @@ function App() {
         </div>
         <div className={` ${styles.rightSide}`}>
           <BurgerConstructor />
-
         </div>
       </div>
     </>
