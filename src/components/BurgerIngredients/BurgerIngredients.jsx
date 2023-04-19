@@ -5,8 +5,10 @@ import data from '../../utils/data.js'
 import { Tab } from '@ya.praktikum/react-developer-burger-ui-components'
 import { CurrencyIcon } from '@ya.praktikum/react-developer-burger-ui-components'
 import { Counter } from '@ya.praktikum/react-developer-burger-ui-components'
+import PropTypes from 'prop-types'
+import checkType from '../../utils/checkType.jsx'
 
-const BurgerIngredients = () => {
+const BurgerIngredients = ({data}) => {
   const [current, setCurrent] = React.useState('one')
   return (
     <>
@@ -111,5 +113,9 @@ const BurgerIngredients = () => {
     </>
   )
 }
+
+BurgerIngredients.propTypes = {
+  data: PropTypes.arrayOf(checkType).isRequired
+};
 
 export default BurgerIngredients

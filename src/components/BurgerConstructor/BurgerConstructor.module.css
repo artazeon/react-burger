@@ -38,5 +38,11 @@
 }
 
 .dragDropIcon{
-  /* transform: translateY(-50%); */
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: auto;
+  height: 100%;
+  transform: translateX(-50%);
+  
 }

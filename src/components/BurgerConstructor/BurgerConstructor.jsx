@@ -1,14 +1,15 @@
 import React from 'react'
-// import './index.css'
 import styles from './BurgerConstructor.module.css'
-import data from '../../utils/data.js'
+import dragDropIcon from '../../images/drag-and-drop-icon.png'
 import { ConstructorElement } from '@ya.praktikum/react-developer-burger-ui-components'
 import { Button } from '@ya.praktikum/react-developer-burger-ui-components'
 import { CurrencyIcon } from '@ya.praktikum/react-developer-burger-ui-components'
 import { DragIcon } from '@ya.praktikum/react-developer-burger-ui-components'
+import PropTypes from 'prop-types'
+import checkType from '../../utils/checkType.jsx'
 
-const BurgerConstructor = () => {
-  console.log(data)
+const BurgerConstructor = ({data}) => {
+  // console.log(data)
   return (
     <>
       <ConstructorElement
@@ -19,33 +20,30 @@ const BurgerConstructor = () => {
         isLocked={true}
         extraClass={'mt-25 mb-4 ml-8'}
       />
-            
-              
-              
+
       <div className={`${styles.scroll}`}>
-      {!data.length ? 'код с мапом' : 'картинка драгдроп'}
-
-
-        {data.map((el) => {
-          return (
-            <div className={`mb-4 ${styles.compound}`}>
-              
-
-
-
-
-
-              <DragIcon type="primary" />
-              <ConstructorElement
-                text={el.name}
-                price={el.price}
-                thumbnail={el.image}
-                extraClass={'ml-2'}
-                key={el._id}
-              />
-            </div>
-          )
-        })}
+        {data.length ? (
+          data.map((el) => {
+            return (
+              <div className={`mb-4 ${styles.compound}`}>
+                <DragIcon type="primary" />
+                <ConstructorElement
+                  text={el.name}
+                  price={el.price}
+                  thumbnail={el.image}
+                  extraClass={'ml-2'}
+                  key={el._id}
+                />
+              </div>
+            )
+          })
+        ) : (
+          <img
+            src={dragDropIcon}
+            alt="drag-and-drop"
+            className={styles.dragDropIcon}
+          />
+        )}
       </div>
       <ConstructorElement
         text={data[0].name}
@@ -70,5 +68,10 @@ const BurgerConstructor = () => {
     </>
   )
 }
+
+
+BurgerConstructor.propTypes = {
+  data: PropTypes.arrayOf(checkType).isRequired
+};
 
 export default BurgerConstructor

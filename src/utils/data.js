@@ -3,7 +3,7 @@ const data = [
        "_id":"60666c42cc7b410027a1a9b1",
        "name":"Краторная булка N-200i",
        "type":"bun",
-       "proteins":80,
+       "proteins": 80,
        "fat":24,
        "carbohydrates":53,
        "calories":420,
@@ -212,4 +212,6 @@ const data = [
  ]
 
  
+
+
 export default data
