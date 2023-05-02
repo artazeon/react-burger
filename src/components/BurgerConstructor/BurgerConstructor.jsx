@@ -25,14 +25,14 @@ const BurgerConstructor = ({data}) => {
         {data.length ? (
           data.map((el) => {
             return (
-              <div className={`mb-4 ${styles.compound}`}>
+              <div className={`mb-4 ${styles.compound}`} key={el._id}>
                 <DragIcon type="primary" />
                 <ConstructorElement
                   text={el.name}
                   price={el.price}
                   thumbnail={el.image}
                   extraClass={'ml-2'}
-                  key={el._id}
+                  
                 />
               </div>
             )
