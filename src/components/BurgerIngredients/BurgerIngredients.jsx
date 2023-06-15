@@ -1,7 +1,7 @@
 import React from 'react'
 // import './index.css'
 import styles from './BurgerIngredients.module.css'
-import data from '../../utils/data.js'
+//import data from '../../utils/data.js'
 import { Tab } from '@ya.praktikum/react-developer-burger-ui-components'
 import { CurrencyIcon } from '@ya.praktikum/react-developer-burger-ui-components'
 import { Counter } from '@ya.praktikum/react-developer-burger-ui-components'
