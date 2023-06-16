@@ -8,7 +8,7 @@ import { Counter } from '@ya.praktikum/react-developer-burger-ui-components'
 import PropTypes from 'prop-types'
 import checkType from '../../utils/checkType.jsx'
 
-const BurgerIngredients = ({data}) => {
+const BurgerIngredients = ({ data }) => {
   const [current, setCurrent] = React.useState('one')
   return (
     <>
@@ -46,10 +46,9 @@ const BurgerIngredients = ({data}) => {
                     {el.name}
                   </div>
                 </div>
-              )}
-              else return null
+              )
+            } else return null
           })}
-          
         </div>
 
         <div className="text text_type_main-medium mt-10 mb-6">Соусы</div>
@@ -58,9 +57,8 @@ const BurgerIngredients = ({data}) => {
             if (el.type === 'sauce') {
               return (
                 <div className={styles.card} key={el._id}>
-                  
                   <img src={el.image} alt={el.name}></img>
-                  
+
                   <div className={`mb-2 ${styles.descrItem}`}>
                     <span className={`text text_type_digits-default mr-2`}>
                       {el.price}
@@ -73,8 +71,8 @@ const BurgerIngredients = ({data}) => {
                     {el.name}
                   </div>
                 </div>
-              )}
-              else return null
+              )
+            } else return null
           })}
         </div>
         <div className="text text_type_main-medium mt-10 mb-6">Начинки</div>
@@ -83,14 +81,11 @@ const BurgerIngredients = ({data}) => {
             if (el.type === 'main') {
               return (
                 <div className={styles.card} key={el._id}>
-
-                  
                   <img
                     src={el.image}
                     alt={el.name}
                     className={`pl-2 pr-2`}
                   ></img>
-                  
 
                   <div className={`mb-2 mt-2 ${styles.descrItem}`}>
                     <span className={`text text_type_digits-default mr-2`}>
@@ -101,12 +96,11 @@ const BurgerIngredients = ({data}) => {
                   <div
                     className={`text text_type_main-default ${styles.descrItem}`}
                   >
-                  
                     {el.name}
                   </div>
                 </div>
-              )}
-              else return null
+              )
+            } else return null
           })}
         </div>
       </div>
@@ -115,7 +109,7 @@ const BurgerIngredients = ({data}) => {
 }
 
 BurgerIngredients.propTypes = {
-  data: PropTypes.arrayOf(checkType).isRequired
-};
+  data: PropTypes.arrayOf(checkType).isRequired,
+}
 
 export default BurgerIngredients

@@ -3,7 +3,6 @@
   min-height: calc(100vh - 545px);
   overflow: auto;
   position: relative;
-  
 }
 
 .scroll::-webkit-scrollbar {
@@ -33,16 +32,64 @@
 
 .compound {
   display: flex;
-  align-items: center; 
-  
+  align-items: center;
 }
 
-.dragDropIcon{
+.dragDropIcon {
   position: absolute;
   top: 0;
   left: 50%;
   width: auto;
   height: 100%;
   transform: translateX(-50%);
+}
+
+.checkMarkContainer {
+  position: relative;
+  width: 120px; 
+  height: 120px; 
+  margin: 0 auto;
   
+  overflow: hidden;
+}
+
+.checkMarkContainer img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+}
+
+.checkMarktopImage {
+  z-index: 2;
+}
+
+.checkMarktopImage1 {
+  z-index: 1;
+  animation: rotate 3s linear infinite; /* Скорость вращения для первой картинки */
+  position: relative;
+}
+
+.checkMarktopImage2 {
+  z-index: 1;
+  animation: rotate 10s linear infinite; /* Скорость вращения для второй картинки */
+  position: relative;
+}
+
+.checkMarktopImage3 {
+  z-index: 1;
+  animation: rotate 5s linear infinite; /* Скорость вращения для третьей картинки */
+  position: relative;
+}
+
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
