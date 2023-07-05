@@ -1,10 +1,22 @@
-import React from 'react';
+import React, { useEffect } from 'react'
 import styles from './ModalOverlay.module.css'
 
 const ModalOverlay = ({ onClose }) => {
-  return (
-    <div className={`${styles.overlay}`} onClick={onClose}></div>
-  );
-};
+  useEffect(() => {
+    const handleKeyDown = (event) => {
+      if (event.keyCode === 27) {
+        onClose()
+      }
+    }
 
-export default ModalOverlay;
+    document.addEventListener('keydown', handleKeyDown)
+
+    return () => {
+      document.removeEventListener('keydown', handleKeyDown)
+    }
+  }, [])
+
+  return <div className={`${styles.overlay}`} onClick={onClose}></div>
+}
+
+export default ModalOverlay
