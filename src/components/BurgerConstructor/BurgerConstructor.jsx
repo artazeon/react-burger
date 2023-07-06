@@ -1,10 +1,7 @@
 import React, { useState, useEffect } from 'react'
 
 import Modal from '../Modal/Modal'
-import ModalOverlay from '../ModalOverlay/ModalOverlay'
 import OrderDetails from '../OrderDetails/OrderDetails'
-
-import stylesModal from '../Modal/Modal.module.css'
 
 import styles from './BurgerConstructor.module.css'
 import dragDropIcon from '../../images/drag-and-drop-icon.png'

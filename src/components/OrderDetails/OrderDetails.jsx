@@ -1,7 +1,6 @@
 import React from 'react'
 import styles from './OrderDetails.module.css'
 
-import stylesModal from '../Modal/Modal.module.css'
 import checkMark from '../../images/checkMark/checkMark.svg'
 import checkMarkBg1 from '../../images/checkMark/checkMarkBg1.svg'
 import checkMarkBg2 from '../../images/checkMark/checkMarkBg2.svg'
@@ -11,7 +10,7 @@ const OrderDetails = () => {
   return (
     <>
       <p
-        className={`mt-30 mb-8 text text_type_digits-large ${stylesModal.numberOrder}`}
+        className={`mr-25 ml-25 mt-30 mb-8 text text_type_digits-large ${styles.numberOrder}`}
       >
         034536
       </p>

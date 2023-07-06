@@ -1,0 +1,20 @@
+.title {
+    height: 64px;
+    display: flex;
+    align-items: center;
+    min-width: 636px;
+}
+
+.energyContainer {
+  display: flex;
+  gap: 20px;
+}
+
+.energyValue {
+  display: flex;
+  flex-direction: column;
+}
+
+.energyValue span {
+  align-self: center;
+}

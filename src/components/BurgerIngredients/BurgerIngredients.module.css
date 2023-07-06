@@ -1,16 +1,3 @@
-.card {
-  max-width: 268px;
-  width: 268px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-}
-.card img {
-  align-self: center;
-}
-
 .category {
   display: flex;
   flex-wrap: wrap;
@@ -19,18 +6,6 @@
   column-gap: 24px;
   row-gap: 32px;
 }
-
-.descrItem {
-  text-align: center;
-  display: flex;
-  align-items: center;
-  
-}
-.descrItem svg {
-  width: 24px;
-  height: 24px;
-}
-
 
 .scroll {
   max-height: calc(100vh - 268px);
