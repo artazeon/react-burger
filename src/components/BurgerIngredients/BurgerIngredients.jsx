@@ -1,12 +1,14 @@
 import React, { useState } from 'react'
-import styles from './BurgerIngredients.module.css'
 import { Tab } from '@ya.praktikum/react-developer-burger-ui-components'
+
 import PropTypes from 'prop-types'
 import checkType from '../../utils/checkType.jsx'
 
 import Modal from '../Modal/Modal'
 import IngredientDetails from '../IngredientDetails/IngredientDetails'
 import BurgerIngredientsCard from '../BurgerIngredientsCard/BurgerIngredientsCard'
+
+import styles from './BurgerIngredients.module.css'
 
 const BurgerIngredients = ({ data }) => {
   const [current, setCurrent] = useState('one')
@@ -20,9 +22,9 @@ const BurgerIngredients = ({ data }) => {
     setIsOpenModal(true)
   }
 
-  const handleOpenModal = () => {
-    setIsOpenModal(true)
-  }
+  // const handleOpenModal = () => {
+  //   setIsOpenModal(true)
+  // }
 
   const handleCloseModal = () => {
     setIsOpenModal(false)
@@ -49,7 +51,7 @@ const BurgerIngredients = ({ data }) => {
         <div className={styles.category}>
           {data.map((el) => {
             if (el.type === 'bun') {
-              return <BurgerIngredientsCard togglePopup={togglePopup} el={el} />
+              return <BurgerIngredientsCard togglePopup={togglePopup} el={el} key={el._id}/>
             }
             return null
           })}
@@ -59,7 +61,7 @@ const BurgerIngredients = ({ data }) => {
         <div className={styles.category}>
           {data.map((el) => {
             if (el.type === 'sauce') {
-              return <BurgerIngredientsCard togglePopup={togglePopup} el={el} />
+              return <BurgerIngredientsCard togglePopup={togglePopup} el={el} key={el._id}/>
             }
             return null
           })}
@@ -68,13 +70,13 @@ const BurgerIngredients = ({ data }) => {
         <div className={styles.category}>
           {data.map((el) => {
             if (el.type === 'main') {
-              return <BurgerIngredientsCard togglePopup={togglePopup} el={el} />
+              return <BurgerIngredientsCard togglePopup={togglePopup} el={el} key={el._id}/>
             } else return null
           })}
         </div>
         {isOpenModal && cardSelected && (
-          <Modal onClose={handleCloseModal}>
-            <IngredientDetails data={data} cardSelected={cardSelected} />
+          <Modal onClose={handleCloseModal} title={'Детали ингридиента'}>
+            <IngredientDetails data={data} cardSelected={cardSelected}/>
           </Modal>
         )}
       </div>

@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react'
-import './App.css'
-import styles from './App.module.css'
-//import data from './utils/data.js'
+
 import AppHeader from './components/AppHeader/AppHeader'
 import BurgerIngredients from './components/BurgerIngredients/BurgerIngredients'
 import BurgerConstructor from './components/BurgerConstructor/BurgerConstructor'
+
+import styles from './App.module.css'
+
 const API_URL = 'https://norma.nomoreparties.space/api/ingredients'
 
 function App() {
@@ -32,7 +33,8 @@ function App() {
       <AppHeader />
 
       {products.loading ? (
-        <div>Загрузка товаров...</div>
+        
+        <div className={`mr-10 ${styles.loader}`}><p>Загрузка товаров...</p></div>
       ) : (
         <div className={styles.container}>
           <div className={`mr-10 ${styles.leftSide}`}>

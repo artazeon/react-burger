@@ -1,12 +1,11 @@
 import React from 'react'
-// import './index.css'
-import styles from './AppHeader.module.css'
 
 import { Logo } from '@ya.praktikum/react-developer-burger-ui-components'
 import { BurgerIcon } from '@ya.praktikum/react-developer-burger-ui-components'
 import { ListIcon } from '@ya.praktikum/react-developer-burger-ui-components'
 import { ProfileIcon } from '@ya.praktikum/react-developer-burger-ui-components'
 
+import styles from './AppHeader.module.css'
 
 const AppHeader = () => {
   return (
@@ -16,7 +15,7 @@ const AppHeader = () => {
           <div className={`p-5 ${styles.button}`}>
             <BurgerIcon type="primary" />
             <a
-              href="#"
+              href="http://localhost:3000/"
               className={`pl-2 text text_type_main-default ${styles.buttonText} ${styles.buttonTextActive}`}
             >
               Конструктор
@@ -26,7 +25,7 @@ const AppHeader = () => {
           <div className={`p-5 ${styles.button}`}>
             <ListIcon type="secondary" />
             <a
-              href="#"
+              href="http://localhost:3000/"
               className={`pl-2 text text_type_main-default ${styles.buttonText}`}
             >
               Лента заказов
@@ -39,7 +38,7 @@ const AppHeader = () => {
         <div className={`p-5 ${styles.button}`}>
           <ProfileIcon type="secondary" />
           <a
-            href="#"
+            href="http://localhost:3000/"
             className={`pl-2 text text_type_main-default ${styles.buttonText}`}
           >
             Личный кабинет

@@ -1,4 +1,5 @@
 import React from 'react'
+
 import styles from './OrderDetails.module.css'
 
 import checkMark from '../../images/checkMark/checkMark.svg'

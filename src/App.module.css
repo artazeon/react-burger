@@ -11,3 +11,27 @@
 .rightSide {
   width: 50%;
 }
+
+
+
+.loader {
+  display: flex;
+  justify-content: center;
+  
+  margin: 0 auto;
+  font-size: 20px;
+  opacity: 0;
+  animation: fade-in-out 1.5s ease-in-out infinite;
+}
+
+@keyframes fade-in-out {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 0;
+  }
+}

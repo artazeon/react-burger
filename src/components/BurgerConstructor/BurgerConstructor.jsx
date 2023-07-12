@@ -1,17 +1,18 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
+
+import { ConstructorElement } from '@ya.praktikum/react-developer-burger-ui-components'
+import { Button } from '@ya.praktikum/react-developer-burger-ui-components'
+import { CurrencyIcon } from '@ya.praktikum/react-developer-burger-ui-components'
+import { DragIcon } from '@ya.praktikum/react-developer-burger-ui-components'
+
+import PropTypes from 'prop-types'
+import checkType from '../../utils/checkType.jsx'
 
 import Modal from '../Modal/Modal'
 import OrderDetails from '../OrderDetails/OrderDetails'
 
 import styles from './BurgerConstructor.module.css'
 import dragDropIcon from '../../images/drag-and-drop-icon.png'
-
-import { ConstructorElement } from '@ya.praktikum/react-developer-burger-ui-components'
-import { Button } from '@ya.praktikum/react-developer-burger-ui-components'
-import { CurrencyIcon } from '@ya.praktikum/react-developer-burger-ui-components'
-import { DragIcon } from '@ya.praktikum/react-developer-burger-ui-components'
-import PropTypes from 'prop-types'
-import checkType from '../../utils/checkType.jsx'
 
 const BurgerConstructor = ({ data }) => {
   const [isOpenModal, setIsOpenModal] = useState(false)
