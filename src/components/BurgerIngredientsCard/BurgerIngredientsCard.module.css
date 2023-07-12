@@ -1,0 +1,33 @@
+.card {
+    max-width: 268px;
+    width: 268px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+  .card img {
+    align-self: center;
+  }
+  
+
+  .descrItem {
+    text-align: center;
+    display: flex;
+    align-items: center;
+    
+  }
+  .descrItem svg {
+    width: 24px;
+    height: 24px;
+  }
+
+
+
+
+
+
+
+
+

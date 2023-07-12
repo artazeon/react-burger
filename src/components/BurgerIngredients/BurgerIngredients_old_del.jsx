@@ -1,0 +1,159 @@
+import React, { useState } from 'react'
+import styles from './BurgerIngredients.module.css'
+import { Tab } from '@ya.praktikum/react-developer-burger-ui-components'
+import { CurrencyIcon } from '@ya.praktikum/react-developer-burger-ui-components'
+import { Counter } from '@ya.praktikum/react-developer-burger-ui-components'
+import PropTypes from 'prop-types'
+import checkType from '../../utils/checkType.jsx'
+
+import Modal from '../Modal/Modal'
+import IngredientDetails from '../IngredientDetails/IngredientDetails'
+
+const BurgerIngredients = ({ data }) => {
+  const [current, setCurrent] = useState('one')
+
+  const [isOpenModal, setIsOpenModal] = useState(false)
+
+  const [cardSelected, setCardSelected] = useState(null)
+
+  const togglePopup = (el) => {
+    el && setCardSelected(el)
+    setIsOpenModal(true)
+  }
+
+  const handleOpenModal = () => {
+    setIsOpenModal(true)
+  }
+
+  const handleCloseModal = () => {
+    setIsOpenModal(false)
+  }
+
+  return (
+    <>
+      <div className="text text_type_main-large mt-10 mb-5">Собери бургер</div>
+
+      <div style={{ display: 'flex' }}>
+        <Tab value="one" active={current === 'one'} onClick={setCurrent}>
+          Булки
+        </Tab>
+        <Tab value="two" active={current === 'two'} onClick={setCurrent}>
+          Соусы
+        </Tab>
+        <Tab value="three" active={current === 'three'} onClick={setCurrent}>
+          Начинки
+        </Tab>
+      </div>
+      <div className={styles.scroll}>
+        <div className="text text_type_main-medium mt-10 mb-6">Булки</div>
+        <div className={styles.category}>
+          {data.map((el) => {
+            if (el.type === 'bun') {
+              return (
+                <div
+                  className={styles.card}
+                  key={el._id}
+                  onClick={() => togglePopup(el)}
+                >
+                  <img src={el.image} alt={el.name}></img>
+                  <Counter count={1} size="default" extraClass="m-1" />
+                  <div className={`mb-2 ${styles.descrItem}`}>
+                    <span className={`text text_type_digits-default mr-2`}>
+                      {el.price}
+                    </span>
+                    <CurrencyIcon type="primary" />
+                  </div>
+                  <div
+                    className={`text text_type_main-default ${styles.descrItem}`}
+                  >
+                    {el.name}
+                  </div>
+                </div>
+              )
+            }
+            return null
+          })}
+        </div>
+
+        <div className="text text_type_main-medium mt-10 mb-6">Соусы</div>
+        <div className={styles.category}>
+          {data.map((el) => {
+            if (el.type === 'sauce') {
+              return (
+                <div
+                  className={styles.card}
+                  key={el._id}
+                  onClick={() => togglePopup(el)}
+                >
+                  <img src={el.image} alt={el.name}></img>
+
+                  <div className={`mb-2 ${styles.descrItem}`}>
+                    <span className={`text text_type_digits-default mr-2`}>
+                      {el.price}
+                    </span>
+                    <CurrencyIcon type="primary" />
+                  </div>
+                  <div
+                    className={`text text_type_main-default ${styles.descrItem}`}
+                  >
+                    {el.name}
+                  </div>
+                </div>
+              )
+            }
+            return null
+          })}
+        </div>
+        <div className="text text_type_main-medium mt-10 mb-6">Начинки</div>
+        <div className={styles.category}>
+          {data.map((el) => {
+            if (el.type === 'main') {
+              return (
+                <div
+                  className={styles.card}
+                  key={el._id}
+                  onClick={() => togglePopup(el)}
+                >
+                  <img
+                    src={el.image}
+                    alt={el.name}
+                    className={`pl-2 pr-2`}
+                  ></img>
+
+                  <div className={`mb-2 mt-2 ${styles.descrItem}`}>
+                    <span className={`text text_type_digits-default mr-2`}>
+                      {el.price}
+                    </span>
+                    <CurrencyIcon type="primary" />
+                  </div>
+                  <div
+                    className={`text text_type_main-default ${styles.descrItem}`}
+                  >
+                    {el.name}
+                  </div>
+                </div>
+              )
+            } else return null
+          })}
+        </div>
+        {isOpenModal && cardSelected && (
+          <Modal onClose={handleCloseModal}>
+            <IngredientDetails data={data} cardSelected={cardSelected} />
+          </Modal>
+        )}
+      </div>
+    </>
+  )
+}
+
+BurgerIngredients.propTypes = {
+  data: PropTypes.arrayOf(checkType).isRequired,
+}
+
+export default BurgerIngredients
+
+// const newData = data.reduce((ac, el) => {
+//   if (el.type === 'bun') {
+//     ac[el.type].ingridient =
+//   }
+// }, {})
