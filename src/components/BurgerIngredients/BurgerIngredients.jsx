@@ -1,12 +1,12 @@
 import React, { useState } from 'react'
 import { Tab } from '@ya.praktikum/react-developer-burger-ui-components'
 
-import PropTypes from 'prop-types'
-import checkType from '../../utils/checkType.jsx'
-
 import Modal from '../Modal/Modal'
 import IngredientDetails from '../IngredientDetails/IngredientDetails'
 import BurgerIngredientsCard from '../BurgerIngredientsCard/BurgerIngredientsCard'
+
+import PropTypes from 'prop-types'
+import BurgerIngredientsProps from '../../utils/BurgerIngredientsProps.jsx'
 
 import styles from './BurgerIngredients.module.css'
 
@@ -21,10 +21,6 @@ const BurgerIngredients = ({ data }) => {
     el && setCardSelected(el)
     setIsOpenModal(true)
   }
-
-  // const handleOpenModal = () => {
-  //   setIsOpenModal(true)
-  // }
 
   const handleCloseModal = () => {
     setIsOpenModal(false)
@@ -84,8 +80,10 @@ const BurgerIngredients = ({ data }) => {
   )
 }
 
+
+
 BurgerIngredients.propTypes = {
-  data: PropTypes.arrayOf(checkType).isRequired,
+  data: PropTypes.arrayOf(BurgerIngredientsProps).isRequired,
 }
 
 export default BurgerIngredients

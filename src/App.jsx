@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react'
 
+import API_URL from './utils/constants'
+
 import AppHeader from './components/AppHeader/AppHeader'
 import BurgerIngredients from './components/BurgerIngredients/BurgerIngredients'
 import BurgerConstructor from './components/BurgerConstructor/BurgerConstructor'
 
 import styles from './App.module.css'
-
-const API_URL = 'https://norma.nomoreparties.space/api/ingredients'
 
 function App() {
   const [products, setProducts] = useState({
@@ -33,8 +33,9 @@ function App() {
       <AppHeader />
 
       {products.loading ? (
-        
-        <div className={`mr-10 ${styles.loader}`}><p>Загрузка товаров...</p></div>
+        <div className={`mr-10 ${styles.loader}`}>
+          <p>Загрузка товаров...</p>
+        </div>
       ) : (
         <div className={styles.container}>
           <div className={`mr-10 ${styles.leftSide}`}>

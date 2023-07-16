@@ -1,15 +1,12 @@
 import React, { useState } from 'react'
 
-import { ConstructorElement } from '@ya.praktikum/react-developer-burger-ui-components'
-import { Button } from '@ya.praktikum/react-developer-burger-ui-components'
-import { CurrencyIcon } from '@ya.praktikum/react-developer-burger-ui-components'
-import { DragIcon } from '@ya.praktikum/react-developer-burger-ui-components'
-
-import PropTypes from 'prop-types'
-import checkType from '../../utils/checkType.jsx'
+import { ConstructorElement, Button, CurrencyIcon, DragIcon } from '@ya.praktikum/react-developer-burger-ui-components'
 
 import Modal from '../Modal/Modal'
 import OrderDetails from '../OrderDetails/OrderDetails'
+
+import PropTypes from 'prop-types'
+import checkType from '../../utils/BurgerIngredientsProps.jsx'
 
 import styles from './BurgerConstructor.module.css'
 import dragDropIcon from '../../images/drag-and-drop-icon.png'
