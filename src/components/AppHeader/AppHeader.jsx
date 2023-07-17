@@ -7,7 +7,8 @@ import styles from './AppHeader.module.css'
 const AppHeader = () => {
   return (
     <header className={`pt-4 pb-4 ${styles.header}`}>
-      <div className={`${styles.container}`}>
+      <div className={`container`}>
+      <div className={`${styles.wrapAppHeader}`}>
         <div className={`${styles.wrapButtonLeft}`}>
           <div className={`p-5 ${styles.button}`}>
             <BurgerIcon type="primary" />
@@ -36,11 +37,12 @@ const AppHeader = () => {
           <ProfileIcon type="secondary" />
           <a
             href="http://localhost:3000/"
-            className={`pl-2 text text_type_main-default ${styles.buttonText}`}
+            className={`p-2 text text_type_main-default ${styles.buttonText}`}
           >
             Личный кабинет
           </a>
         </div>
+      </div>
       </div>
     </header>
   )

@@ -37,12 +37,14 @@ function App() {
           <p>Загрузка товаров...</p>
         </div>
       ) : (
-        <div className={styles.container}>
-          <div className={`mr-10 ${styles.leftSide}`}>
-            <BurgerIngredients data={products.list} />
-          </div>
-          <div className={` ${styles.rightSide}`}>
-            <BurgerConstructor data={products.list} />
+        <div className={`container`}>
+          <div className={styles.wrapApp}>
+            <div className={`mr-10 ${styles.leftSide}`}>
+              <BurgerIngredients data={products.list} />
+            </div>
+            <div className={` ${styles.rightSide}`}>
+              <BurgerConstructor data={products.list} />
+            </div>
           </div>
         </div>
       )}
