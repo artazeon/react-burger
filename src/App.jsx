@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 
-import API_URL from './utils/constants'
+import {API_URL} from './utils/constants'
 
 import AppHeader from './components/AppHeader/AppHeader'
 import BurgerIngredients from './components/BurgerIngredients/BurgerIngredients'

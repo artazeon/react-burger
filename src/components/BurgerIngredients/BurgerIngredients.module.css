@@ -8,7 +8,7 @@
 }
 
 .scroll {
-  max-height: calc(100vh - 268px);
+  height: calc(100vh - 268px);
   overflow: auto;
   position: relative;
 }
@@ -16,12 +16,13 @@
 .scroll::-webkit-scrollbar {
   width: 8px;
   height: 8px;
-  background-color: #2f2f37;
   border-top: 52px solid #131316;
+  background-color: #2f2f37;
   border-bottom: 52px solid #131316;
 }
 
 .scroll::-webkit-scrollbar-thumb {
+  height: 292px;
   background-color: #8585ad;
   background: linear-gradient(
     to bottom,
@@ -33,7 +34,6 @@
     rgba(0, 0, 0, 0)
   );
   border-color: transparent;
-  height: 292px;
 }
 
 .scroll::-webkit-scrollbar-thumb:hover {

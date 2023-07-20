@@ -3,10 +3,10 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background-color: #1c1c21;
   border: 1px solid rgba(76, 76, 255, 0.2);
-  z-index: 101;
   border-radius: 40px;
+  background-color: #1c1c21;
+  z-index: 101;
 }
 
 .close {
@@ -27,8 +27,8 @@
 }
 
 .title {
-  height: 64px;
   display: flex;
+  width: 636px;
+  height: 64px;
   align-items: center;
-  min-width: 636px;
 }

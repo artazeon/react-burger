@@ -1,12 +1,12 @@
 import React, { useState } from 'react'
-import { Tab } from '@ya.praktikum/react-developer-burger-ui-components'
 
+import PropTypes from 'prop-types'
+import {IngredientsProps} from '../../utils/types.js'
+
+import { Tab } from '@ya.praktikum/react-developer-burger-ui-components'
 import Modal from '../Modal/Modal'
 import IngredientDetails from '../IngredientDetails/IngredientDetails'
 import BurgerIngredientsCard from '../BurgerIngredientsCard/BurgerIngredientsCard'
-
-import PropTypes from 'prop-types'
-import BurgerIngredientsProps from '../../utils/BurgerIngredientsProps.jsx'
 
 import styles from './BurgerIngredients.module.css'
 
@@ -83,7 +83,7 @@ const BurgerIngredients = ({ data }) => {
 
 
 BurgerIngredients.propTypes = {
-  data: PropTypes.arrayOf(BurgerIngredientsProps).isRequired,
+  data: PropTypes.arrayOf(IngredientsProps).isRequired,
 }
 
 export default BurgerIngredients

@@ -1,8 +1,7 @@
 .scroll {
-  max-height: calc(100vh - 545px);
-  min-height: calc(100vh - 545px);
-  overflow: auto;
   position: relative;
+  height: calc(100vh - 545px);
+  overflow: auto;
 }
 
 .scroll::-webkit-scrollbar {
@@ -12,9 +11,9 @@
 }
 
 .scroll::-webkit-scrollbar-thumb {
-  background-color: #8585ad;
-  border-color: transparent;
   height: 100px;
+  border-color: transparent;
+  background-color: #8585ad;
 }
 .scroll::-webkit-scrollbar-thumb:hover {
   background-color: #aaaadc;
@@ -36,22 +35,20 @@
 }
 
 .wrapDragDropIcon {
-  max-height: calc(100vh - 370px);
-  min-height: calc(100vh - 370px);
+  position: relative;
+  height: calc(100vh - 370px);
   display: flex;
   justify-content: center;
   align-items: center;
-
-  position: relative;
 }
 
 .dragDropIcon {
-  max-width: 100%;
-  max-height: 100%;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  max-width: 100%;
+  max-height: 100%;
   z-index: 1;
 }
 
@@ -66,54 +63,5 @@
   }
   to {
     transform: translate(-50%, -50%) rotate(110deg);
-  }
-}
-
-.checkMarkContainer {
-  position: relative;
-  width: 120px;
-  height: 120px;
-  margin: 0 auto;
-
-  overflow: hidden;
-}
-
-.checkMarkContainer img {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  margin: auto;
-}
-
-.checkMarktopImage {
-  z-index: 2;
-}
-
-.checkMarktopImage1 {
-  z-index: 1;
-  animation: rotate 3s linear infinite; /* Скорость вращения для первой картинки */
-  position: relative;
-}
-
-.checkMarktopImage2 {
-  z-index: 1;
-  animation: rotate 10s linear infinite; /* Скорость вращения для второй картинки */
-  position: relative;
-}
-
-.checkMarktopImage3 {
-  z-index: 1;
-  animation: rotate 5s linear infinite; /* Скорость вращения для третьей картинки */
-  position: relative;
-}
-
-@keyframes rotate {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
   }
 }

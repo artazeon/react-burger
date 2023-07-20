@@ -1,15 +1,15 @@
 .header {
-  background-color: #1c1c21;
   display: flex;
+  background-color: #1c1c21;
   justify-content: center;
   align-items: center;
 }
 
 .wrapAppHeader {
+  position: relative;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  position: relative;
 }
 
 .wrapButtonLeft {
@@ -36,8 +36,8 @@
 .button {
   display: flex;
   align-items: center;
-  
 }
+
 .button a {
   text-decoration: none;
 }

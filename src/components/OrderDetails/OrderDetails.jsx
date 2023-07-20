@@ -1,11 +1,11 @@
 import React from 'react'
 
 import styles from './OrderDetails.module.css'
-
 import checkMark from '../../images/checkMark/checkMark.svg'
 import checkMarkBg1 from '../../images/checkMark/checkMarkBg1.svg'
 import checkMarkBg2 from '../../images/checkMark/checkMarkBg2.svg'
 import checkMarkBg3 from '../../images/checkMark/checkMarkBg3.svg'
+
 
 const OrderDetails = () => {
   return (
