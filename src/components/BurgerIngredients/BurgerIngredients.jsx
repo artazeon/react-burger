@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 
 import PropTypes from 'prop-types'
 import {IngredientsProps} from '../../utils/types.js'
@@ -7,10 +7,16 @@ import { Tab } from '@ya.praktikum/react-developer-burger-ui-components'
 import Modal from '../Modal/Modal'
 import IngredientDetails from '../IngredientDetails/IngredientDetails'
 import BurgerIngredientsCard from '../BurgerIngredientsCard/BurgerIngredientsCard'
+import { ProductsContext } from '../../utils/productsContext'
 
 import styles from './BurgerIngredients.module.css'
 
-const BurgerIngredients = ({ data }) => {
+const BurgerIngredients = () => {
+
+  const {products} = useContext(ProductsContext);
+
+
+  
   const [current, setCurrent] = useState('one')
 
   const [isOpenModal, setIsOpenModal] = useState(false)
@@ -45,7 +51,7 @@ const BurgerIngredients = ({ data }) => {
         <div className="text text_type_main-medium mt-10 mb-6">Булки</div>
 
         <div className={styles.category}>
-          {data.map((el) => {
+          {products.list.map((el) => {
             if (el.type === 'bun') {
               return <BurgerIngredientsCard togglePopup={togglePopup} el={el} key={el._id}/>
             }
@@ -55,7 +61,7 @@ const BurgerIngredients = ({ data }) => {
 
         <div className="text text_type_main-medium mt-10 mb-6">Соусы</div>
         <div className={styles.category}>
-          {data.map((el) => {
+          {products.list.map((el) => {
             if (el.type === 'sauce') {
               return <BurgerIngredientsCard togglePopup={togglePopup} el={el} key={el._id}/>
             }
@@ -64,7 +70,7 @@ const BurgerIngredients = ({ data }) => {
         </div>
         <div className="text text_type_main-medium mt-10 mb-6">Начинки</div>
         <div className={styles.category}>
-          {data.map((el) => {
+          {products.list.map((el) => {
             if (el.type === 'main') {
               return <BurgerIngredientsCard togglePopup={togglePopup} el={el} key={el._id}/>
             } else return null
@@ -72,7 +78,7 @@ const BurgerIngredients = ({ data }) => {
         </div>
         {isOpenModal && cardSelected && (
           <Modal onClose={handleCloseModal} title={'Детали ингридиента'}>
-            <IngredientDetails data={data} cardSelected={cardSelected}/>
+            <IngredientDetails cardSelected={cardSelected}/>
           </Modal>
         )}
       </div>
@@ -82,8 +88,16 @@ const BurgerIngredients = ({ data }) => {
 
 
 
+
+// BurgerIngredients.propTypes = {
+//   data: PropTypes.arrayOf(IngredientsProps).isRequired,
+// }
+
+
 BurgerIngredients.propTypes = {
-  data: PropTypes.arrayOf(IngredientsProps).isRequired,
+  products: PropTypes.shape({
+    list: PropTypes.arrayOf(IngredientsProps).isRequired
+  })
 }
 
 export default BurgerIngredients

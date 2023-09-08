@@ -1,4 +1,7 @@
-import React from 'react'
+import React, { useContext } from 'react'
+
+import { ProductsContext } from '../../utils/productsContext'
+
 
 import styles from './OrderDetails.module.css'
 import checkMark from '../../images/checkMark/checkMark.svg'
@@ -8,6 +11,9 @@ import checkMarkBg3 from '../../images/checkMark/checkMarkBg3.svg'
 
 
 const OrderDetails = () => {
+
+  const {products} = useContext(ProductsContext);
+  
   return (
     <>
       <p

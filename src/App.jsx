@@ -5,6 +5,7 @@ import {API_URL} from './utils/constants'
 import AppHeader from './components/AppHeader/AppHeader'
 import BurgerIngredients from './components/BurgerIngredients/BurgerIngredients'
 import BurgerConstructor from './components/BurgerConstructor/BurgerConstructor'
+import { ProductsContext } from './utils/productsContext'
 
 import styles from './App.module.css'
 
@@ -13,6 +14,7 @@ function App() {
     loading: true,
     list: [],
   })
+
 
   useEffect(() => {
     async function fetchData() {
@@ -40,10 +42,16 @@ function App() {
         <div className={`container`}>
           <div className={styles.wrapApp}>
             <div className={`mr-10 ${styles.leftSide}`}>
-              <BurgerIngredients data={products.list} />
+
+            <ProductsContext.Provider value={{products, setProducts}}>
+              <BurgerIngredients />
+            </ProductsContext.Provider>
+
             </div>
             <div className={` ${styles.rightSide}`}>
-              <BurgerConstructor data={products.list} />
+            <ProductsContext.Provider value={{products, setProducts}}>             
+              <BurgerConstructor />
+            </ProductsContext.Provider>
             </div>
           </div>
         </div>
