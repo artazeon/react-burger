@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react'
+import React, { useState, useContext, useMemo, useReducer } from 'react'
 
 import PropTypes from 'prop-types'
 import { IngredientsProps } from '../../utils/types.js'
@@ -15,11 +15,12 @@ import OrderDetails from '../OrderDetails/OrderDetails'
 import styles from './BurgerConstructor.module.css'
 import dragDropIcon1 from '../../images/drag-and-drop-icon1.png'
 import dragDropIcon2 from '../../images/drag-and-drop-icon2.png'
-import { ProductsContext } from '../../utils/productsContext.js'
+import { ProductsContext, OrderContext } from '../../utils/productsContext.js'
 
 const BurgerConstructor = () => {
+  const { products } = useContext(ProductsContext)
 
-  const {products} = useContext(ProductsContext);
+  const orderTest = useContext(OrderContext)
 
   const [isOpenModal, setIsOpenModal] = useState(false)
 
@@ -31,44 +32,62 @@ const BurgerConstructor = () => {
     setIsOpenModal(false)
   }
 
+  const orderSum = useMemo(
+    () =>
+      orderTest.reduce((accum, el) => {
+        return el.type === 'bun' ? accum + el.price * 2 : accum + el.price
+      }, 0),
+    [orderTest]
+  )
+  
+
+
+
+
+
+
+  const productBun = orderTest.find((el) => {
+    return el.type === 'bun'
+  })
+
   return (
     <>
       <div className={`mt-25`}>
-        {products.list.length ? (
+        {orderTest.length ? (
           <>
             <ConstructorElement
-              text={products.list[0].name}
-              price={products.list[0].price}
-              thumbnail={products.list[0].image}
+              text={productBun.name}
+              price={productBun.price}
+              thumbnail={productBun.image}
               type="top"
               isLocked={true}
               extraClass={'mb-4 ml-8'}
             />
+
             <div className={`${styles.scroll}`}>
-              {products.list.map((el) => {
+              {orderTest.map((el) => {
                 if (el.type !== 'bun') {
                   return (
-                    
-                      <div className={`mb-4 ${styles.compound}`} key={el._id}>
-                        <DragIcon type="primary" />
-                        <ConstructorElement
-                          text={el.name}
-                          price={el.price}
-                          thumbnail={el.image}
-                          extraClass={'ml-2'}
-                        />
-                      </div>
-                    
+                    <div className={`mb-4 ${styles.compound}`} key={el._id}>
+                      <DragIcon type="primary" />
+                      <ConstructorElement
+                        text={el.name}
+                        price={el.price}
+                        thumbnail={el.image}
+                        extraClass={'ml-2'}
+                      />
+                    </div>
                   )
                 } else {
                   return null
                 }
               })}
             </div>
+
             <ConstructorElement
-              text={products.list[0].name}
-              price={products.list[0].price}
-              thumbnail={products.list[0].image}
+              text={productBun.name}
+              price={productBun.price}
+              thumbnail={productBun.image}
               type="bottom"
               isLocked={true}
               extraClass={'ml-8'}
@@ -90,7 +109,10 @@ const BurgerConstructor = () => {
         )}
 
         <div className={`mt-10 mr-4 ${styles.order}`}>
-          <p className="text text_type_digits-medium mr-2">610</p>
+          <p className="text text_type_digits-medium mr-2">
+            {orderSum}
+          </p>
+
           <CurrencyIcon type="primary" />
           <Button
             onClick={handleOpenModal}
@@ -113,11 +135,10 @@ const BurgerConstructor = () => {
   )
 }
 
-
 BurgerConstructor.propTypes = {
   products: PropTypes.shape({
-    list: PropTypes.arrayOf(IngredientsProps).isRequired
-  })
+    list: PropTypes.arrayOf(IngredientsProps).isRequired,
+  }),
 }
 
 export default BurgerConstructor

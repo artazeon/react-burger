@@ -1,12 +1,12 @@
-import React, { useState, useEffect } from 'react'
-
-import {API_URL} from './utils/constants'
+import React, { useState, useEffect, useContext } from 'react'
 
 import AppHeader from './components/AppHeader/AppHeader'
 import BurgerIngredients from './components/BurgerIngredients/BurgerIngredients'
 import BurgerConstructor from './components/BurgerConstructor/BurgerConstructor'
-import { ProductsContext } from './utils/productsContext'
+import { OrderContext, ProductsContext } from './utils/productsContext'
 
+import {API_URL} from './utils/constants'
+import { orderTest } from './utils/orderTest'
 import styles from './App.module.css'
 
 function App() {
@@ -15,6 +15,8 @@ function App() {
     list: [],
   })
 
+
+ 
 
   useEffect(() => {
     async function fetchData() {
@@ -49,8 +51,11 @@ function App() {
 
             </div>
             <div className={` ${styles.rightSide}`}>
-            <ProductsContext.Provider value={{products, setProducts}}>             
-              <BurgerConstructor />
+            <ProductsContext.Provider value={{products, setProducts}}>
+              <OrderContext.Provider value={orderTest}>
+                <BurgerConstructor />
+              </OrderContext.Provider>
+
             </ProductsContext.Provider>
             </div>
           </div>
