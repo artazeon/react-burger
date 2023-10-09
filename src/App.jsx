@@ -1,12 +1,12 @@
-import React, { useState, useEffect, useContext } from 'react'
+import React, { useState, useEffect } from 'react'
 
 import AppHeader from './components/AppHeader/AppHeader'
 import BurgerIngredients from './components/BurgerIngredients/BurgerIngredients'
 import BurgerConstructor from './components/BurgerConstructor/BurgerConstructor'
 import { OrderContext, ProductsContext } from './utils/productsContext'
 
-import {API_URL} from './utils/constants'
-import { orderTest } from './utils/orderTest'
+import { API_URL } from './utils/constants'
+import { orderIngredients } from './utils/orderIngredients'
 import styles from './App.module.css'
 
 function App() {
@@ -14,9 +14,6 @@ function App() {
     loading: true,
     list: [],
   })
-
-
- 
 
   useEffect(() => {
     async function fetchData() {
@@ -44,19 +41,16 @@ function App() {
         <div className={`container`}>
           <div className={styles.wrapApp}>
             <div className={`mr-10 ${styles.leftSide}`}>
-
-            <ProductsContext.Provider value={{products, setProducts}}>
-              <BurgerIngredients />
-            </ProductsContext.Provider>
-
+              <ProductsContext.Provider value={{ products, setProducts }}>
+                <BurgerIngredients />
+              </ProductsContext.Provider>
             </div>
             <div className={` ${styles.rightSide}`}>
-            <ProductsContext.Provider value={{products, setProducts}}>
-              <OrderContext.Provider value={orderTest}>
-                <BurgerConstructor />
-              </OrderContext.Provider>
-
-            </ProductsContext.Provider>
+              <ProductsContext.Provider value={{ products, setProducts }}>
+                <OrderContext.Provider value={orderIngredients}>
+                  <BurgerConstructor />
+                </OrderContext.Provider>
+              </ProductsContext.Provider>
             </div>
           </div>
         </div>

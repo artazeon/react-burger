@@ -16,26 +16,19 @@ import OrderDetails from '../OrderDetails/OrderDetails'
 import styles from './BurgerConstructor.module.css'
 import dragDropIcon1 from '../../images/drag-and-drop-icon1.png'
 import dragDropIcon2 from '../../images/drag-and-drop-icon2.png'
-import { ProductsContext, OrderContext } from '../../utils/productsContext.js'
+import { OrderContext } from '../../utils/productsContext.js'
 
 const BurgerConstructor = () => {
-  const { products } = useContext(ProductsContext)
-
-  const orderTest = useContext(OrderContext)
+  const orderIngredients = useContext(OrderContext)
 
   const [isOpenModal, setIsOpenModal] = useState(false)
 
   const [apiResponse, setApiResponse] = useState(null)
 
-  
-
   const handleOpenModal = () => {
-    
-
     const orderIds = {
-      ingredients: orderTest.map((el) => el._id),
+      ingredients: orderIngredients.map((el) => el._id),
     }
-
 
     postOrder(orderIds)
       .then((response) => response.json())
@@ -44,7 +37,7 @@ const BurgerConstructor = () => {
         setApiResponse(data)
       })
       .catch((error) => {
-        console.error('Ошибка при отправке запроса:', error)
+        console.error(error)
       })
 
     setIsOpenModal(true)
@@ -56,20 +49,20 @@ const BurgerConstructor = () => {
 
   const orderSum = useMemo(
     () =>
-      orderTest.reduce((accum, el) => {
+      orderIngredients.reduce((accum, el) => {
         return el.type === 'bun' ? accum + el.price * 2 : accum + el.price
       }, 0),
-    [orderTest]
+    [orderIngredients]
   )
 
-  const productBun = orderTest.find((el) => {
+  const productBun = orderIngredients.find((el) => {
     return el.type === 'bun'
   })
 
   return (
     <>
       <div className={`mt-25`}>
-        {orderTest.length ? (
+        {orderIngredients.length ? (
           <>
             <ConstructorElement
               text={productBun.name}
@@ -81,7 +74,7 @@ const BurgerConstructor = () => {
             />
 
             <div className={`${styles.scroll}`}>
-              {orderTest.map((el) => {
+              {orderIngredients.map((el) => {
                 if (el.type !== 'bun') {
                   return (
                     <div className={`mb-4 ${styles.compound}`} key={el._id}>
@@ -140,7 +133,7 @@ const BurgerConstructor = () => {
 
           {isOpenModal && (
             <Modal onClose={handleCloseModal}>
-              <OrderDetails apiResponse={apiResponse}/>
+              <OrderDetails apiResponse={apiResponse} />
             </Modal>
           )}
         </div>
