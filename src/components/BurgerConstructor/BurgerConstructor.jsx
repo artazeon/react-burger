@@ -18,6 +18,7 @@ import dragDropIcon1 from '../../images/drag-and-drop-icon1.png'
 import dragDropIcon2 from '../../images/drag-and-drop-icon2.png'
 import { OrderContext } from '../../utils/productsContext.js'
 
+
 const BurgerConstructor = () => {
   const orderIngredients = useContext(OrderContext)
 
