@@ -2,26 +2,43 @@ import React, { useContext } from 'react'
 
 import { ProductsContext } from '../../utils/productsContext'
 
-
 import styles from './OrderDetails.module.css'
 import checkMark from '../../images/checkMark/checkMark.svg'
 import checkMarkBg1 from '../../images/checkMark/checkMarkBg1.svg'
 import checkMarkBg2 from '../../images/checkMark/checkMarkBg2.svg'
 import checkMarkBg3 from '../../images/checkMark/checkMarkBg3.svg'
 
-
-const OrderDetails = () => {
-
-  const {products} = useContext(ProductsContext);
+const OrderDetails = ({ apiResponse }) => {
   
-  return (
+  const { products } = useContext(ProductsContext)
+
+  return apiResponse === null ? (
     <>
       <p
         className={`mr-25 ml-25 mt-30 mb-8 text text_type_digits-large ${styles.numberOrder}`}
       >
-        034536
+        ****
+      </p>
+      <p className={`mb-15 text text_type_main-medium`}>
+        ожидание номера заказа
+      </p>
+
+      <p className={`mt-15 mb-2 text text_type_main-default`}>
+        Ваш заказ в обработке
+      </p>
+      <p className={`mb-30 text text_type_main-default text_color_inactive`}>
+        Дождитесь получения номера заказа
+      </p>
+    </>
+  ) : (
+    <>
+      <p
+        className={`mr-25 ml-25 mt-30 mb-8 text text_type_digits-large ${styles.numberOrder}`}
+      >
+        {apiResponse.order.number}
       </p>
       <p className={`mb-15 text text_type_main-medium`}>идентификатор заказа</p>
+
       <div className={` ${styles.checkMarkContainer}`}>
         <img
           className={`${styles.checkMarktopImage}`}

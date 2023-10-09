@@ -1,7 +1,8 @@
-import React, { useState, useContext, useMemo, useReducer } from 'react'
+import React, { useState, useContext, useMemo } from 'react'
 
 import PropTypes from 'prop-types'
 import { IngredientsProps } from '../../utils/types.js'
+import { postOrder } from '../../utils/api.jsx'
 
 import {
   ConstructorElement,
@@ -24,7 +25,28 @@ const BurgerConstructor = () => {
 
   const [isOpenModal, setIsOpenModal] = useState(false)
 
+  const [apiResponse, setApiResponse] = useState(null)
+
+  
+
   const handleOpenModal = () => {
+    
+
+    const orderIds = {
+      ingredients: orderTest.map((el) => el._id),
+    }
+
+
+    postOrder(orderIds)
+      .then((response) => response.json())
+      .then((data) => {
+        console.log('Ответ от сервера:', data)
+        setApiResponse(data)
+      })
+      .catch((error) => {
+        console.error('Ошибка при отправке запроса:', error)
+      })
+
     setIsOpenModal(true)
   }
 
@@ -39,12 +61,6 @@ const BurgerConstructor = () => {
       }, 0),
     [orderTest]
   )
-  
-
-
-
-
-
 
   const productBun = orderTest.find((el) => {
     return el.type === 'bun'
@@ -109,9 +125,7 @@ const BurgerConstructor = () => {
         )}
 
         <div className={`mt-10 mr-4 ${styles.order}`}>
-          <p className="text text_type_digits-medium mr-2">
-            {orderSum}
-          </p>
+          <p className="text text_type_digits-medium mr-2">{orderSum}</p>
 
           <CurrencyIcon type="primary" />
           <Button
@@ -126,7 +140,7 @@ const BurgerConstructor = () => {
 
           {isOpenModal && (
             <Modal onClose={handleCloseModal}>
-              <OrderDetails />
+              <OrderDetails apiResponse={apiResponse}/>
             </Modal>
           )}
         </div>
